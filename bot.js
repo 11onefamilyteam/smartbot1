@@ -261,7 +261,21 @@ client.on('message', msg => {
 
 
 
+ client.on('message', msg => {
+     if(msg.content === '.help')
+                 setTimeout(function() {
+   msg.reply('**تم الارسال بالخاص , https://media.giphy.com/media/3oEdv9OpWdiMIcCnYc/giphy.gif**')
+                 }, 5000)
+   });
 
+
+
+   client.on('message', msg => {
+     if(msg.content === '.invite')
+                 setTimeout(function() {
+   msg.reply('**تم الارسال بالخاص رابط البوت,https://media.giphy.com/media/3oEdv9OpWdiMIcCnYc/giphy.gif**')
+                 }, 5000)
+   });
 
 
 
