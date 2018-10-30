@@ -244,7 +244,7 @@ client.on('message', msg => {
    client.on('message', msg => {
      if(msg.content === 'السلام عليكم')
                  setTimeout(function() {
-   msg.reply('وعليكم السلام عليكم ورحمه الله وبركاته')
+   msg.reply('https://media1.tenor.com/images/53450faac6ba46523b9817356ab55a80/tenor.gif?itemid=10748497')
                  }, 10000)
    });
 
@@ -256,9 +256,6 @@ client.on('message', msg => {
    msg.reply('https://media.giphy.com/media/3orif16n4OBZk75t4c/giphy.gif')
                  }, 10000)
    });
-
-
-
 
 
 
