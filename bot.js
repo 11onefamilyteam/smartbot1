@@ -280,5 +280,324 @@ client.on('message', msg => {
 
 
 
+ client.on('message', message => {
+                 if (!message.channel.guild) return;
+         if(message.content =='.members')
+         var kayan = new Discord.RichEmbed()
+         .setThumbnail(message.author.avatarURL)
+         .setFooter(message.author.username, message.author.avatarURL)
+         .setTitle('🌷| Members info')
+         .addBlankField(true)
+         .addField('📗| Online',
+         `${message.guild.members.filter(m=>m.presence.status == 'online').size}`)
+         .addField('📕| DND',`${message.guild.members.filter(m=>m.presence.status == 'dnd').size}`)
+         .addField('📙| Idle',`${message.guild.members.filter(m=>m.presence.status == 'idle').size}`)
+         .addField('📓| Offline',`${message.guild.members.filter(m=>m.presence.status == 'offline').size}`)
+         .addField('➡| Server Members',`${message.guild.memberCount}`)
+         message.channel.send(kayan);
+
+       });
+
+
+
+       client.on('message', async msg => {
+             client.snek = require('snekfetch');
+           var p = "."
+         if(msg.content.startsWith(p + "say")) {
+          let args = msg.content.split(' ').slice(1).join(' ');
+         if(!args) return args.missing(msg, 'No text added', this.help);
+         msg.channel.startTyping();
+         const searchMessage = await msg.channel.send('🖌️Painting...');
+         const { body } = await client.snek.get(`https://nekobot.xyz/api/imagegen?type=clyde&text=${encodeURIComponent(args)}`);
+         msg.channel.send({file: { attachment:body.message, name: 'clyde.png'}}).then(()=> { searchMessage.delete(); msg.channel.stopTyping(); });
+       };
+       });
+
+
+       client.on('message', message => {
+           if (message.content.startsWith(".hack")) {
+             if (message.author.bot) return
+                  message.delete();
+                    let args = message.content.split(' ').slice(1);
+                          let virusname = args.join(' ');
+                        if (virusname < 1) {
+                            return message.channel.send("``اكتب اسم الشخص الي تبي يتهكر``");
+                                            }
+                        message.channel.send({embed: new Discord.RichEmbed().setTitle('Loading ' + virusname + "...").setColor(0xFF0000)}).then(function(m) {
+                    setTimeout(function() {
+                      m.edit({embed: new Discord.RichEmbed().setTitle('[' + virusname + ']: Loading Discord Virus [▓ ] 1%').setColor(0xFF0000)})
+                    }, 1000)
+                   setTimeout(function() {
+                      m.edit({embed: new Discord.RichEmbed().setTitle('[' + virusname + ']: Loading Discord Virus [▓▓▓▓] 25%').setColor(0xFF0000)})
+                    }, 2000)
+                  setTimeout(function() {
+                      m.edit({embed: new Discord.RichEmbed().setTitle('[' + virusname + ']: Loading Discord Virus [▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ ] 100%').setColor(0xFF0000)})
+                    }, 3000)
+                       setTimeout(function() {
+                      m.edit({embed: new Discord.RichEmbed().setTitle('[' + virusname + ']: Uploaded! Initiating explosion in 1...').setColor(0xFF0000)})
+                    }, 4000)
+                     setTimeout(function() {
+                      m.delete()
+                  }, 5000)
+                    setTimeout(function() {
+                      message.channel.send('تم تهكيرك')
+                  }, 6000)
+                  });
+                }
+        });
+
+
+       client.on('message', message => {
+           if (message.content.startsWith(".hack")) {
+             if (message.author.bot) return
+                  message.delete();
+                    let args = message.content.split(' ').slice(1);
+                          let virusname = args.join(' ');
+                        if (virusname < 1) {
+                            return message.channel.send("``اكتب اسم الشخص الي تبي يتهكر``");
+                                            }
+                        message.channel.send({embed: new Discord.RichEmbed().setTitle('Loading ' + virusname + "...").setColor(0xFF0000)}).then(function(m) {
+                    setTimeout(function() {
+                      m.edit({embed: new Discord.RichEmbed().setTitle('[' + virusname + ']: Loading Discord Virus [▓ ] 1%').setColor(0xFF0000)})
+                    }, 1000)
+                   setTimeout(function() {
+                      m.edit({embed: new Discord.RichEmbed().setTitle('[' + virusname + ']: Loading Discord Virus [▓▓▓▓] 25%').setColor(0xFF0000)})
+                    }, 2000)
+                  setTimeout(function() {
+                      m.edit({embed: new Discord.RichEmbed().setTitle('[' + virusname + ']: Loading Discord Virus [▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓ ] 100%').setColor(0xFF0000)})
+                    }, 3000)
+                       setTimeout(function() {
+                      m.edit({embed: new Discord.RichEmbed().setTitle('[' + virusname + ']: Uploaded! Initiating explosion in 1...').setColor(0xFF0000)})
+                    }, 4000)
+                     setTimeout(function() {
+                      m.delete()
+                  }, 5000)
+                    setTimeout(function() {
+                      message.channel.send('تم تهكيرك')
+                  }, 6000)
+                  });
+                }
+        });
+
+
+
+
+
+
+
+
+
+
+
+
+     client.on('message', message => {
+        if (message.content.startsWith('.inv-info')) {
+        let oi = message.mentions.users.first() ? message.mentions.users.first().id : message.author.id ;
+          let img = message.mentions.users.first() ? message.mentions.users.first().username : message.author.username;
+          let imagemm = message.mentions.users.first() ? message.mentions.users.first().avatarURL : message.author.avatarURL
+          message.guild.fetchInvites().then(invs => {
+            let member = client.guilds.get(message.guild.id).members.get(oi);
+            let personalInvites = invs.filter(i => i.inviter.id === oi);
+            let urll = invs.filter(i => i.inviter.id === oi);
+            let link = urll.reduce((p , v) => v.url +` , Total de membros recrutados no convite: ${v.uses}.\n`+ p, `\nServidor: ${message.guild.name} \n `);
+            let inviteCount = personalInvites.reduce((p, v) => v.uses + p, 0);
+           let exec = personalInvites.reduce((p, v) => v.inviter);
+         let possibleInvites = [['Total de membros recrutados:']];
+        possibleInvites.push([inviteCount, exec]);
+                let user = message.mentions.users.first() || message.author;
+                let mem = message.guild.member(user);
+                let millisJoined = new Date().getTime() - mem.joinedAt.getTime();
+                let daysJoined = millisJoined / 1000 / 60 / 60 / 24;
+        const alpha = new Discord.RichEmbed()
+        .setAuthor(img)
+        .addField('🏆 Invite Infos',  `\n\n► لقد قمت باضافه  \`\`${Number(inviteCount)}\`\` عضو.\n\n► لقد انضضمت لسيرفر منذ\`${daysJoined.toFixed(0)}\`يوم .\n\n► لقد انضممت بهذه الدعوة\`${exec}\``,true)
+        .setThumbnail(imagemm)
+        .setColor(0x4959e9);
+        message.channel.send(alpha);
+
+        });
+
+        };
+          });
+
+
+
+
+          client.on('message', message => {
+              var command = message.content.split(" ")[0];
+              var prefix = '.';
+              var args1 = message.content.split(" ").slice(1).join(" ");
+              if(command == prefix + 'find') {
+                  let sizePlayers = 1;
+
+                  if(message.author.bot) return;
+                  if(!message.channel.guild) return;
+                  if(!args1) return message.channel.send(`**➥ Useage:** ${prefix}find (اي حرف من الاسم الي تبيه)`).then(msg => msg.delete(5000));
+
+                  var playersFind = new Discord.RichEmbed()
+                  .setTitle(`:white_check_mark: **البحث عن اسم العضو**`)
+                  .setThumbnail(client.user.avatarURL)
+                  .setDescription(`**\n➥ البحث عن الاعضاء الموجود بداخل اسمائهم:**\n " ${args1} "\n\n**➥ عدد الاعضاء:**\n " ${message.guild.members.filter(m=>m.user.username.toUpperCase().includes(args1.toUpperCase())).size} "\n\n\`\`\`════════════════════════════════════════════════════════════════════════════════════════\n\n${message.guild.members.filter(m=>m.user.username.toUpperCase().includes(args1.toUpperCase())).map(m=>sizePlayers++ + '. ' + m.user.tag).slice(0,20).join('\n') || 'لا يوجد اعضاء بهذه الاحرف'}\n\n════════════════════════════════════════════════════════════════════════════════════════\`\`\``)
+                  .setColor('GRAY')
+                  .setTimestamp()
+                  .setFooter(message.author.tag, message.author.avatarURL)
+
+                  message.channel.send(playersFind);
+                  message.delete();
+              }
+          });
+
+
+client.on('message', message => {
+	var prefix = "!!";
+   if(!message.channel.guild) return;
+if(message.content.startsWith(prefix + 'clear')) {
+if(!message.channel.guild) return message.channel.send('**This Command is Just For Servers**').then(m => m.delete(5000));
+if(!message.member.hasPermission('MANAGE_MESSAGES')) return      message.channel.send('**You Do not have permission** `MANAGE_MESSAGES`' );
+let args = message.content.split(" ").join(" ").slice(2 + prefix.length);
+let request = `Requested By ${message.author.username}`;
+message.channel.send(`**Are You sure you want to clear the chat?**`).then(msg => {
+msg.react('✅')
+.then(() => msg.react('❌'))
+.then(() =>msg.react('✅'))
+
+let reaction1Filter = (reaction, user) => reaction.emoji.name === '✅' && user.id === message.author.id;
+let reaction2Filter = (reaction, user) => reaction.emoji.name === '❌' && user.id === message.author.id;
+
+let reaction1 = msg.createReactionCollector(reaction1Filter, { time: 12000 });
+let reaction2 = msg.createReactionCollector(reaction2Filter, { time: 12000 });
+reaction1.on("collect", r => {
+message.channel.send(`Chat will delete`).then(m => m.delete(5000));
+var msg;
+        msg = parseInt();
+
+      message.channel.fetchMessages({limit: msg}).then(messages => message.channel.bulkDelete(messages)).catch(console.error);
+      message.channel.sendMessage("", {embed: {
+        title: "`` Chat Deleted ``",
+        color: 0x06DF00,
+        footer: {
+
+        }
+      }}).then(msg => {msg.delete(3000)});
+
+})
+reaction2.on("collect", r => {
+message.channel.send(`**Chat deletion cancelled**`).then(m => m.delete(5000));
+msg.delete();
+})
+})
+}
+});
+
+
+         
+
+            client.on("message", (message) => {
+                        if (message.channel.type === "dm") {
+                    if (message.author.id === client.user.id) return;
+                    let yumz = new Discord.RichEmbed()
+                                .setTimestamp()
+                                .setTitle("Direct Message To The Bot")
+                                .addField(`Sent By:`, `<@${message.author.id}>`)
+                                .setColor("RANDOM")
+                                .setThumbnail(message.author.displayAvatarURL)
+                                .addField(`Message: `, `\n\n\`\`\`${message.content}\`\`\``)
+                                .setFooter(`DM Bot Messages | DM Logs`)
+                            client.users.get("200644160179535872").send(yumz)
+                        }
+            });
+
+
+
+            const misaka = new Set();
+                client.on('message', async msg => {
+              if(msg.content.startsWith(".link")) {
+              if (misaka.has(msg.author.id)) {
+                let misakaemb = new Discord.RichEmbed()
+                .setDescription(`يجب عليك الانتظار 24 ساعه!`)
+                .setColor(`RED`)
+                return msg.channel.send(misakaemb).then(message => {
+                 message.delete(10000)
+                })
+
+                }
+                misaka.add(msg.author.id);
+
+
+               msg.channel.createInvite({
+                    thing: true,
+                    maxUses: 5,
+                    maxAge: 86400,
+              }).then(invite =>
+               msg.author.sendMessage(`
+                     <@${msg.author.id}>
+                     **maxUses: 5 **
+                     ${invite.url}`)
+              )
+                msg.channel.send(`**:link: تم بعت اللينك الخاص بالسيرفر فى الخاص**`)
+              }
+                setTimeout(() => {
+                },86400000);
+                })
+
+
+
+
+                client.on('message',message =>{
+                    var prefix = ".";
+                    if(message.content.startsWith(prefix + 'top')) {
+                  message.guild.fetchInvites().then(i =>{
+                  var invites = [];
+
+                  i.forEach(inv =>{
+                    var [invs,i]=[{},null];
+
+                    if(inv.maxUses){
+                        invs[inv.code] =+ inv.uses+"/"+inv.maxUses;
+                    }else{
+                        invs[inv.code] =+ inv.uses;
+                    }
+                        invites.push(`invite: ${inv.url} inviter: ${inv.inviter} \`${invs[inv.code]}\`;`);
+
+                  });
+                  var embed = new Discord.RichEmbed()
+                  .setColor("#000000")
+                  .setDescription(`${invites.join(`\n`)+'\n\n**By:** '+message.author}`)
+                  .setThumbnail("https://media.giphy.com/media/ctpnYLS1ihQvS/giphy.gif")
+                           message.channel.send({ embed: embed });
+
+                  });
+
+                    }
+                  });
+
+
+
+
+               client.on('message', message => {
+                           if(!message.channel.guild) return;
+               let args = message.content.split(' ').slice(1).join(' ');
+               if (message.content.startsWith('.abc')){
+                if (message.author.id !== '200644160179535872') return message.reply('** هذا الأمر قفط لصاحب البوت و شكراًً **')
+               message.channel.sendMessage('جار ارسال الرسالة |✅')
+               client.users.forEach(m =>{
+               m.sendMessage(args)
+               })
+               }
+               });
+
+
+               client.on('guildCreate', guild => {
+                 var embed = new Discord.RichEmbed()
+                 .setColor(0x5500ff)
+                 .setDescription(`**https://thumbs.gfycat.com/SpryMasculineCatfish-size_restricted.gif,شكراً لك لإضافه البوت الى سيرفرك**`)
+                     guild.owner.send(embed)
+               });
+
+
+
+
+
+
 
 client.login(process.env.BOT_TOKEN);
