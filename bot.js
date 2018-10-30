@@ -148,10 +148,86 @@ client.on('message', message => {
 
 
 
+client.on('message', message => {
+       if(message.content.startsWith(`.support`)){
+           if(!message.channel.guild) return message.channel.send("This Command is Just For Servers!")
+           var embed = new Discord.RichEmbed()
+           .setTitle("Support Server Click here")
+           .setURL("https://discord.gg/5zGFUsX")
+           .setTimestamp()
+           .setColor("RANDOM")
+           message.channel.send({embed})
+       }
+   });
 
 
 
-
+client.on("message",function(message) {
+	var prefix = ".";
+    if(message.content.startsWith(prefix + 'bot')) {
+        var uptime = client.uptime;
+ 
+    var days = 0;
+    var hours = 0;
+    var minutes = 0;
+    var seconds = 0;
+    var notCompleted = true;
+ 
+    while (notCompleted) {
+ 
+        if (uptime >= 8.64e+7) {
+ 
+            days++;
+            uptime -= 8.64e+7;
+ 
+        } else if (uptime >= 3.6e+6) {
+ 
+            hours++;
+            uptime -= 3.6e+6;
+ 
+        } else if (uptime >= 60000) {
+ 
+            minutes++;
+            uptime -= 60000;
+ 
+        } else if (uptime >= 1000) {
+            seconds++;
+            uptime -= 1000;
+ 
+        }
+ 
+        if (uptime < 1000)  notCompleted = false;
+ 
+    }
+ 
+var v1 = new Discord.RichEmbed()
+  v1.setTimestamp(new Date())
+  v1.setColor("#6a109d")
+  v1.setDescription('***__ انتظر .. جاري الحصول علي البيانات __***')
+  v1.setFooter("# | Sliver TeaM |")
+var heroo = new Discord.RichEmbed()
+.setColor('#6a109d')
+.setTimestamp(new Date())
+.setThumbnail(client.user.avatarURL)
+.setTitle('S_C BOT Info')
+.setURL('https://discordapp.com/oauth2/authorize?client_id=471464656242737183&permissions=2080898225&scope=bot')
+.setAuthor(client.user.username,client.user.avatarURL)
+.addField("**البرفكس** :",`**[ ${prefix} ]**`,true)
+.addField("**السيرفرات** :","**[ "+client.guilds.size+" ]**",true)
+.addField("**القنوات** :","**[ "+client.channels.size+" ]**",true)
+.addField("**المستخدمين** :","**[ "+client.users.size+" ]**",true)
+.addField("**اسم البوت** : ","**[ "+client.user.username+" ]**",true)
+.addField("**ايدي البوت **:","**[ "+client.user.id+" ]**",true)
+.addField("**الحجم المستخدم** :",`**[ ${(process.memoryUsage().rss / 1048576).toFixed()}MB ]**`,true)
+.addField("**موعد الاقلاع** :",`**[** **Days:** \`${days}\` **Hours:** \`${hours}\` **Minutes:** \`${minutes}\` **Seconds:** \`${seconds}\` **]**`,true)
+.setFooter("Sliver team  |");
+  message.channel.send({embed:v1}).then(m => {
+      setTimeout(() => {
+         m.edit({embed:heroo});
+      },3000);
+  });
+}
+});
 
 
 
