@@ -88,9 +88,6 @@ welcome وسيرحب البوت بالناس
 『${prefix}unmc / فتح الشات』
 **
    `,`
-***__Music Orders__***
-قريبا ...
-
 ***__Games orders__***
  **
 『${prefix}marry  / لعبه التزاوج بس منشن للى تبيه』
