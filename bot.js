@@ -233,5 +233,41 @@ var heroo = new Discord.RichEmbed()
 
 
 
+client.on('message', msg => {
+     if(msg.content === 'هلا')
+                 setTimeout(function() {
+   msg.reply('هلا حبي')
+                 }, 10000)
+   });
+
+
+   client.on('message', msg => {
+     if(msg.content === 'السلام عليكم')
+                 setTimeout(function() {
+   msg.reply('وعليكم السلام عليكم ورحمه الله وبركاته')
+                 }, 10000)
+   });
+
+
+
+   client.on('message', msg => {
+     if(msg.content === 'باك')
+                 setTimeout(function() {
+   msg.reply('https://media.giphy.com/media/3orif16n4OBZk75t4c/giphy.gif')
+                 }, 10000)
+   });
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 client.login(process.env.BOT_TOKEN);
