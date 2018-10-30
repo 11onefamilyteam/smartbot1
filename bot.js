@@ -121,6 +121,7 @@ welcome وسيرحب البوت بالناس
 
 
 
+
 client.on('message', message => {
     if (message.content.startsWith(".id")) {
     message.channel.send({
@@ -129,13 +130,19 @@ client.on('message', message => {
             .setThumbnail(client.user.avatarURL)
             .setColor('RANDOM')
             .setTitle('**المعلومات التى توصل لها البوت** ')
-            .addField('``RAM Usage``', `[${(process.memoryUsage().rss / 1048576).toFixed()}MB]`, true)
+            .addField('``بينق ``' , [`${Date.now() - message.createdTimestamp}` + 'MS'], true)
+            .addField('``مساحه البوت``', `[${(process.memoryUsage().rss / 1048576).toFixed()}MB]`, true)
+            .addField('**عدد السيرفرات التى بها البوت**', [client.guilds.size], true)
+            .addField('``اسم البوت``' , `[ ${client.user.tag} ]` , true)
+            .addField('``ايدى البوت``' , `[ ${client.user.id} ]` , true)
+            .addField("** اسمك **", `${message.author.username}`)
             .addField('** التاج **', message.author.discriminator)
             .addField('**الايدى حقك**', message.author.id)
             .addField('**تاريخ دخولك الديسكورد**', message.author.createdAt)
     })
 }
 });
+
 
 
 
