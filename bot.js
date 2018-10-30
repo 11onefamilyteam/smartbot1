@@ -204,7 +204,7 @@ var v1 = new Discord.RichEmbed()
   v1.setTimestamp(new Date())
   v1.setColor("#6a109d")
   v1.setDescription('***__ انتظر .. جاري الحصول علي البيانات __***')
-  v1.setFooter("# | Sliver TeaM |")
+  v1.setFooter("# | SmartBot |")
 var heroo = new Discord.RichEmbed()
 .setColor('#6a109d')
 .setTimestamp(new Date())
@@ -220,7 +220,7 @@ var heroo = new Discord.RichEmbed()
 .addField("**ايدي البوت **:","**[ "+client.user.id+" ]**",true)
 .addField("**الحجم المستخدم** :",`**[ ${(process.memoryUsage().rss / 1048576).toFixed()}MB ]**`,true)
 .addField("**موعد الاقلاع** :",`**[** **Days:** \`${days}\` **Hours:** \`${hours}\` **Minutes:** \`${minutes}\` **Seconds:** \`${seconds}\` **]**`,true)
-.setFooter("Sliver team  |");
+.setFooter(" Smart Bot  |");
   message.channel.send({embed:v1}).then(m => {
       setTimeout(() => {
          m.edit({embed:heroo});
