@@ -121,6 +121,22 @@ welcome وسيرحب البوت بالناس
 
 
 
+client.on('message', message => {
+    if (message.content.startsWith(".id")) {
+    message.channel.send({
+        embed: new Discord.RichEmbed()
+            .setAuthor(client.user.username,client.user.avatarURL)
+            .setThumbnail(client.user.avatarURL)
+            .setColor('RANDOM')
+            .setTitle('**المعلومات التى توصل لها البوت** ')
+            .addField('``RAM Usage``', `[${(process.memoryUsage().rss / 1048576).toFixed()}MB]`, true)
+            .addField('** التاج **', message.author.discriminator)
+            .addField('**الايدى حقك**', message.author.id)
+            .addField('**تاريخ دخولك الديسكورد**', message.author.createdAt)
+    })
+}
+});
+
 
 
 
@@ -136,6 +152,3 @@ welcome وسيرحب البوت بالناس
 
 
 client.login(process.env.BOT_TOKEN);
-
-
-
